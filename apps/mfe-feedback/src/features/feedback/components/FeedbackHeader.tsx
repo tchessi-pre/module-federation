@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import { Button } from '@/components/ui/button'
-import { useFeedbackUiStore } from '@/feedbackStore'
+import { Button } from '@/shared/ui/button'
+import { useFeedbackUiStore } from '@/shared/state/feedbackStore'
 import FilterChip from './FilterChip'
 
 export default function FeedbackHeader() {

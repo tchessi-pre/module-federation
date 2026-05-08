@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 
-import { cn } from '../../lib/utils'
+import { cn } from '@/shared/lib/utils'
 
 type ButtonVariant = 'default' | 'secondary' | 'ghost' | 'danger'
 type ButtonSize = 'sm' | 'md'
@@ -33,8 +33,7 @@ export function Button({
           'bg-secondary text-white hover:opacity-90 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
         variant === 'danger' &&
           'bg-danger text-white hover:opacity-90 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-        variant === 'ghost' &&
-          'bg-transparent text-foreground hover:bg-muted',
+        variant === 'ghost' && 'bg-transparent text-foreground hover:bg-muted',
         className,
       )}
       {...props}

@@ -1,4 +1,4 @@
-import type { RangeKey } from '@/analyticsStore'
+import type { RangeKey } from '@/shared/state/analyticsStore'
 import type { Kpis } from '@/features/analytics/types'
 
 function mulberry32(seed: number) {

@@ -2,13 +2,13 @@ import * as React from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
-import { Button } from '@/components/ui/button'
-import { useFeedbackUiStore, type SentimentFilter } from '@/feedbackStore'
+import { Button } from '@/shared/ui/button'
+import { StatusCard } from '@/shared/ui/card'
+import { useFeedbackUiStore, type SentimentFilter } from '@/shared/state/feedbackStore'
 
 import FeedbackHeader from '@/features/feedback/components/FeedbackHeader'
 import FeedbackListContent from '@/features/feedback/components/FeedbackListContent'
 import NewFeedbackForm from '@/features/feedback/components/NewFeedbackForm'
-import StatusCard from '@/features/feedback/components/StatusCard'
 import type { CreateFeedbackInput, FeedbackItem, FeedbackSentiment } from '@/features/feedback/types'
 import { feedbackKey, mockCreateFeedback, mockListFeedback } from '@/features/feedback/data'
 

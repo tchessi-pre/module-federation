@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import StandaloneLayout from './app/StandaloneLayout'
-import { ThemeProvider } from './theme'
+import StandaloneLayout from '@/app/StandaloneLayout'
+import { ThemeProvider } from '@/shared/theme/theme'
 
 const queryClient = new QueryClient()
 

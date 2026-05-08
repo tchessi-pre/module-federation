@@ -28,7 +28,7 @@ export default defineConfig([
 		},
 	},
 	{
-		files: ['src/theme.tsx'],
+		files: ['src/shared/theme/theme.tsx'],
 		rules: {
 			'react-refresh/only-export-components': 'off',
 		},

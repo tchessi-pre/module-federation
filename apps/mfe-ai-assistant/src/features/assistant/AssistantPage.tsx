@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { useChat } from '@ai-sdk/react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useAssistantStore } from '@/assistantStore'
+import { StatusCard } from '@/shared/ui/card'
+import { useAssistantStore } from '@/shared/state/assistantStore'
 
 import { createLocalRagFetch } from '@/features/assistant/api/localRagFetch'
 import AssistantHeader from '@/features/assistant/components/AssistantHeader'
@@ -44,14 +44,7 @@ export default function AssistantPage() {
       />
 
       {error ? (
-        <Card className="border-danger/40">
-          <CardHeader>
-            <CardTitle>Erreur</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-foreground/70">
-            {error.message}
-          </CardContent>
-        </Card>
+        <StatusCard title="Erreur" tone="danger" description={error.message} />
       ) : null}
 
       <ConversationCard

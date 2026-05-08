@@ -1,13 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useAnalyticsUiStore } from '@/analyticsStore'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent, CardHeader, CardTitle, StatusCard } from '@/shared/ui/card'
+import { useAnalyticsUiStore } from '@/shared/state/analyticsStore'
 
 import AnalyticsHeader from '@/features/analytics/components/AnalyticsHeader'
 import BarChart from '@/features/analytics/components/BarChart'
 import KpiCard from '@/features/analytics/components/KpiCard'
-import StatusCard from '@/features/analytics/components/StatusCard'
 import { mockFetchKpis } from '@/features/analytics/data'
 import { kpiKey } from '@/features/analytics/types'
 

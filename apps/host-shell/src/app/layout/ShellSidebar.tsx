@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { BarChart3, Bot, LayoutDashboard, MessageSquare } from 'lucide-react'
 
-import { cn } from '../../lib/utils'
+import { cn } from '@/shared/lib/utils'
 
 function NavItem({
   to,

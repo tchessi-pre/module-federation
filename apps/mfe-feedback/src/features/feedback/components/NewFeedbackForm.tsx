@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/shared/ui/button'
+import { Card, CardContent } from '@/shared/ui/card'
+import { Input } from '@/shared/ui/input'
+import { Textarea } from '@/shared/ui/textarea'
 import type { FeedbackSentiment } from '../types'
 
 export default function NewFeedbackForm({

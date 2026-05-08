@@ -1,4 +1,4 @@
-import { useAnalyticsUiStore } from '@/analyticsStore'
+import { useAnalyticsUiStore } from '@/shared/state/analyticsStore'
 import RangeChip from './RangeChip'
 
 export default function AnalyticsHeader() {

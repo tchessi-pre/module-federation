@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, StatusCard } from '@/shared/ui/card'
 
 function KpiCard({ title, value, hint }: { title: string; value: string; hint: string }) {
   return (
@@ -15,22 +15,28 @@ function KpiCard({ title, value, hint }: { title: string; value: string; hint: s
 }
 
 export default function DashboardPage() {
+  const kpis = [
+    { title: 'Satisfaction', value: '92%', hint: 'CSAT (mock)' },
+    { title: 'Détracteurs', value: '7%', hint: 'NPS bucket (mock)' },
+    { title: 'Temps de réponse', value: '1.6s', hint: 'Core Web Vitals (demo)' },
+  ]
+
   return (
     <div className="space-y-4">
-      <Card>
-        <CardHeader>
-          <CardTitle>Plateforme de gestion CX avec micro-frontends</CardTitle>
-        </CardHeader>
-        <CardContent className="text-sm text-foreground/70">
-          Shell Rsbuild (Rspack) + Module Federation, React Router lazy-load par MFE, tokens
-          Tailwind, composants type shadcn/ui, Zustand + TanStack Query.
-        </CardContent>
-      </Card>
+      <StatusCard
+        title="Plateforme de gestion CX avec micro-frontends"
+        description={
+          <>
+            Shell Rsbuild (Rspack) + Module Federation, React Router lazy-load par MFE, tokens
+            Tailwind, composants type shadcn/ui, Zustand + TanStack Query.
+          </>
+        }
+      />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <KpiCard title="Satisfaction" value="92%" hint="CSAT (mock)" />
-        <KpiCard title="Détracteurs" value="7%" hint="NPS bucket (mock)" />
-        <KpiCard title="Temps de réponse" value="1.6s" hint="Core Web Vitals (demo)" />
+        {kpis.map((kpi) => (
+          <KpiCard key={kpi.title} title={kpi.title} value={kpi.value} hint={kpi.hint} />
+        ))}
       </div>
     </div>
   )

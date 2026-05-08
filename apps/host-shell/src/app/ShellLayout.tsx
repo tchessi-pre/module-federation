@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-import { useShellStore } from '../store'
+import { useShellStore } from '@/shared/state/shellStore'
 import ShellHeader from './layout/ShellHeader'
 import ShellSidebar from './layout/ShellSidebar'
 

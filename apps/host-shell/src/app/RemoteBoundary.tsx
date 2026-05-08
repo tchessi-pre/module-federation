@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
+import { StatusCard } from '@/shared/ui/card'
 
 class RemoteErrorBoundary extends React.Component<
   { children: React.ReactNode; fallback: React.ReactNode },
@@ -22,26 +22,16 @@ export default function RemoteBoundary({ children }: { children: React.ReactNode
   return (
     <RemoteErrorBoundary
       fallback={
-        <Card className="border-danger/40">
-          <CardHeader>
-            <CardTitle>Micro-frontend indisponible</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-foreground/70">
-            Vérifie que le remote est démarré et que son remoteEntry est accessible.
-          </CardContent>
-        </Card>
+        <StatusCard
+          title="Micro-frontend indisponible"
+          tone="danger"
+          description="Vérifie que le remote est démarré et que son remoteEntry est accessible."
+        />
       }
     >
       <React.Suspense
         fallback={
-          <Card>
-            <CardHeader>
-              <CardTitle>Chargement…</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-foreground/70">
-              Récupération du micro-frontend.
-            </CardContent>
-          </Card>
+          <StatusCard title="Chargement…" description="Récupération du micro-frontend." />
         }
       >
         {children}

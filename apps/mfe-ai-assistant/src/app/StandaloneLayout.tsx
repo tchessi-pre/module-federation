@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom'
 
-import { useTheme, type ThemeMode } from '../theme'
-import { Button } from '@/components/ui/button'
+import { useTheme, type ThemeMode } from '@/shared/theme/theme'
+import { Button } from '@/shared/ui/button'
 import AssistantRoutes from '@/Routes'
 
 function ThemeToggle() {

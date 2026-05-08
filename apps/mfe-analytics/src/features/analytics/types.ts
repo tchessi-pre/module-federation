@@ -1,4 +1,4 @@
-import type { RangeKey } from '@/analyticsStore'
+import type { RangeKey } from '@/shared/state/analyticsStore'
 
 export type VolumePoint = { day: string; volume: number }
 

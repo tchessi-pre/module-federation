@@ -11,63 +11,7 @@ import { ThemeProvider, useTheme, type ThemeMode } from './theme'
 
 const FeedbackRoutes = React.lazy(() => import('feedback/Routes'))
 const AnalyticsRoutes = React.lazy(() => import('analytics/Routes'))
-
-type RemoteMountModule = {
-  mount: (element: Element, options?: { basename?: string }) => void | (() => void)
-  unmount?: () => void
-}
-
-function AssistantMfe() {
-  const containerRef = React.useRef<HTMLDivElement | null>(null)
-  const [error, setError] = React.useState<Error | null>(null)
-  const [loading, setLoading] = React.useState(true)
-
-  React.useEffect(() => {
-    let cleanup: void | (() => void)
-    let cancelled = false
-
-    async function start() {
-      try {
-        const remote = (await import('assistant/mount')) as unknown as RemoteMountModule
-        if (cancelled) return
-
-        if (!containerRef.current) return
-
-        const maybeCleanup = remote.mount(containerRef.current, { basename: '/assistant' })
-        cleanup = typeof maybeCleanup === 'function' ? maybeCleanup : remote.unmount
-      } catch (e) {
-        if (!cancelled) setError(e as Error)
-      } finally {
-        if (!cancelled) setLoading(false)
-      }
-    }
-
-    start()
-
-    return () => {
-      cancelled = true
-      if (typeof cleanup === 'function') cleanup()
-    }
-  }, [])
-
-  if (error) throw error
-
-  return (
-    <>
-      {loading ? (
-        <Card>
-          <CardHeader>
-            <CardTitle>Chargement…</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm text-foreground/70">
-            Récupération du micro-frontend.
-          </CardContent>
-        </Card>
-      ) : null}
-      <div ref={containerRef} />
-    </>
-  )
-}
+const AssistantRoutes = React.lazy(() => import('assistant/Routes'))
 
 class RemoteErrorBoundary extends React.Component<
   { children: React.ReactNode; fallback: React.ReactNode },
@@ -212,8 +156,9 @@ function Dashboard() {
           <CardTitle>Plateforme de gestion CX avec micro-frontends</CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-foreground/70">
-          Shell Vite + Module Federation, React Router lazy-load par MFE, tokens
-          Tailwind, composants type shadcn/ui, Zustand + TanStack Query.
+          Shell Rsbuild (Rspack) + Module Federation, React Router lazy-load par
+          MFE, tokens Tailwind, composants type shadcn/ui, Zustand + TanStack
+          Query.
         </CardContent>
       </Card>
 
@@ -280,7 +225,7 @@ export default function App() {
               path="assistant/*"
               element={
                 <RemoteBoundary>
-                  <AssistantMfe />
+                  <AssistantRoutes />
                 </RemoteBoundary>
               }
             />

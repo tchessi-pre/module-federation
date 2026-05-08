@@ -1,12 +1,12 @@
-﻿# Tribune CX Hub — Monorepo Micro‑Frontends (Vite + Module Federation)
+# Tribune CX Hub — Monorepo Micro‑Frontends (Rsbuild + Rspack + Module Federation)
 
 Plateforme démo “CX Hub” (React 18 + TypeScript strict) structurée en micro‑frontends, avec un host (shell) et 3 remotes (Feedback, Analytics, AI Assistant).
 
 ## Stack
 
-- Vite 5
+- Rsbuild (tooling) + Rspack (bundler, compatible Webpack)
 - React 18 + TypeScript strict
-- Module Federation via `@originjs/vite-plugin-federation`
+- Module Federation via Rspack (piloté par Rsbuild)
 - Tailwind CSS + composants UI (style shadcn)
 - Zustand + TanStack Query
 
@@ -47,15 +47,7 @@ pnpm dev
 - Analytics : http://localhost:5175/
 - AI Assistant : http://localhost:5176/
 
-### Important : pourquoi “build --watch + preview” ?
-
-Avec Vite, le dev server est “bundleless”. Or la federation a besoin d’un `remoteEntry.js` généré dans `dist/`.  
-Donc chaque app tourne en 2 processus :
-
-- `vite build --watch` : génère `dist/assets/remoteEntry.js` et les chunks
-- `vite preview` : sert `dist/` sur un port fixe
-
-Conséquence : sur `5173/5174/5175/5176` on est en mode preview, donc tu ne verras pas les endpoints dev Vite (`/@vite/client`, `@react-refresh`, etc.).
+Avec Rsbuild/Rspack, le dev server sert directement les bundles et le `remoteEntry.js` : plus besoin du contournement “build --watch + preview”.
 
 ## Routes utiles
 
@@ -109,11 +101,11 @@ pnpm lint
 
 ### 1) Federation
 
-Le host référence les remotes via leurs `remoteEntry.js` servis par `vite preview` :
+Le host référence les remotes via leurs `remoteEntry.js` servis par les dev servers Rsbuild :
 
-- `feedback` → `http://localhost:5174/assets/remoteEntry.js`
-- `analytics` → `http://localhost:5175/assets/remoteEntry.js`
-- `assistant` → `http://localhost:5176/assets/remoteEntry.js`
+- `feedback` → `http://localhost:5174/remoteEntry.js`
+- `analytics` → `http://localhost:5175/remoteEntry.js`
+- `assistant` → `http://localhost:5176/remoteEntry.js`
 
 Les remotes exposent typiquement `./Routes` (React Router). Pour que les styles du MFE soient bien chargés quand il est consommé en remote, l’import CSS est placé dans le module exposé (pas seulement dans `main.tsx`).
 
@@ -135,15 +127,13 @@ Le host déclare les modules dans `apps/host-shell/src/remotes.d.ts` (ex : `decl
 
 ### Port déjà utilisé
 
-Si un port 5173–5176 est déjà pris, `vite preview --strictPort` échoue.  
+Si un port 5173–5176 est déjà pris, Rsbuild échoue (config `strictPort: true`).  
 Ferme les anciens processus (ou redémarre ton terminal), puis relance `pnpm dev`.
 
-### Sous Windows : erreurs de suppression de `dist/` pendant `build --watch`
+### Sous Windows : cache navigateur / service worker
 
-Quand `vite preview` sert `dist/`, Windows peut verrouiller certains fichiers.  
-Les apps sont configurées avec `build.emptyOutDir = false` pour éviter des erreurs “rm” pendant le watch.
-
-Si tu suspectes des vieux chunks, supprime manuellement `apps/<app>/dist` puis relance `pnpm dev`.
+Si tu vois des comportements “bizarres” (chargements partiels, 404 inattendues), fais un hard refresh (Ctrl+F5).  
+Si tu as déjà activé un service worker/PWA, pense à le désenregistrer.
 
 ### “Cannot find module 'assistant/mount'” dans l’IDE
 
@@ -151,4 +141,3 @@ Si le build passe mais l’IDE continue d’afficher l’erreur, redémarre le s
 
 - “TypeScript: Restart TS Server”
 - ou “Developer: Reload Window”
-

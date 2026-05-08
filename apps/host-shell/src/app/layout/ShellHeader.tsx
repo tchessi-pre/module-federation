@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, ExternalLink, Monitor, Moon, Sun } from 'lucide-react'
 
-import { Badge } from '../../components/ui/badge'
-import { Button } from '../../components/ui/button'
 import { useTheme, type ThemeMode } from '../../theme'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()

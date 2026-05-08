@@ -1,8 +1,8 @@
 import { Link, Route, Routes } from 'react-router-dom'
 
-import { Button } from '../components/ui/button'
-import AnalyticsRoutes from '../Routes'
-import { useTheme, type ThemeMode } from '../theme'
+import { Button } from '@/components/ui/button'
+import AnalyticsRoutes from '@/Routes'
+import { useTheme, type ThemeMode } from '@/theme'
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()

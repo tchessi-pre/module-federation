@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { Route, Routes } from 'react-router-dom'
-
-import DashboardPage from '../features/dashboard/DashboardPage'
-import NotFoundPage from '../features/notfound/NotFoundPage'
+import DashboardPage from '@/features/dashboard/DashboardPage'
+import NotFoundPage from '@/features/notfound/NotFoundPage'
 import RemoteBoundary from './RemoteBoundary'
 import ShellLayout from './ShellLayout'
 

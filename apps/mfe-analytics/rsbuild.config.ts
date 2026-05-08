@@ -1,8 +1,17 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const rootDir = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [pluginReact()],
+  resolve: {
+    alias: {
+      '@': path.join(rootDir, 'src'),
+    },
+  },
   source: {
     entry: {
       index: './src/main.tsx',
@@ -36,4 +45,3 @@ export default defineConfig({
     },
   },
 })
-

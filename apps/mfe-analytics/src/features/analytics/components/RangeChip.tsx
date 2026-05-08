@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
-export default function FilterChip({
+export default function RangeChip({
   active,
   children,
   onClick,

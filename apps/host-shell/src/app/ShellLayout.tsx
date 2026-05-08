@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
 
+import { useShellStore } from '../store'
 import ShellHeader from './layout/ShellHeader'
 import ShellSidebar from './layout/ShellSidebar'
-import { useShellStore } from '../store'
 
 export default function ShellLayout() {
   const sidebarCollapsed = useShellStore((s) => s.sidebarCollapsed)

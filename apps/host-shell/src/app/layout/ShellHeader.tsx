@@ -5,14 +5,20 @@ import { useTheme, type ThemeMode } from '@/shared/theme/theme'
 import { Button } from '@/shared/ui/button'
 import { Badge } from '@/shared/ui/badge'
 
-function ThemeToggle() {
+function ThemeIconButton() {
   const { theme, setTheme } = useTheme()
 
   const nextTheme: ThemeMode =
     theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system'
 
   return (
-    <Button variant="ghost" size="sm" onClick={() => setTheme(nextTheme)}>
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={() => setTheme(nextTheme)}
+      aria-label={`Thème : ${theme}. Passer à ${nextTheme}.`}
+      className="h-9 w-9 p-0"
+    >
       {theme === 'dark' ? (
         <Moon className="h-4 w-4" />
       ) : theme === 'light' ? (
@@ -20,7 +26,6 @@ function ThemeToggle() {
       ) : (
         <Monitor className="h-4 w-4" />
       )}
-      <span className="hidden sm:inline">Thème : {theme}</span>
     </Button>
   )
 }
@@ -51,22 +56,23 @@ export default function ShellHeader({
               {sidebarCollapsed ? 'Ouvrir' : 'Réduire'}
             </span>
           </Button>
-          <Link to="/" className="font-semibold tracking-tight">
-            CX Hub
+          <div className="h-6 w-px bg-border" />
+          <Link
+            to="/"
+            className="flex items-center gap-2 rounded-md px-2 py-1 font-semibold tracking-tight hover:bg-muted"
+          >
+            <span className="text-foreground">CX Hub</span>
+            <Badge variant="success">Demo</Badge>
           </Link>
-          <Badge>Demo MFE</Badge>
         </div>
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <a
-            className="inline-flex items-center gap-1 text-sm text-foreground/70 hover:text-foreground"
-            href="https://www.smart-tribune.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Smart Tribune
-            <ExternalLink className="h-4 w-4" />
-          </a>
+          <ThemeIconButton />
+          <Button asChild variant="ghost" size="sm">
+            <a href="https://www.smart-tribune.com/" target="_blank" rel="noreferrer">
+              <span className="hidden sm:inline">Smart Tribune</span>
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </Button>
         </div>
       </div>
     </header>

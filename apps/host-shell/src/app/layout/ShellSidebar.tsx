@@ -19,8 +19,8 @@ function NavItem({
       to={to}
       className={({ isActive }) =>
         cn(
-          'flex items-center gap-2 rounded-md py-2 text-sm transition-[padding,background-color,color] duration-200 ease-out hover:bg-muted',
-          collapsed ? 'justify-center px-2' : 'px-3',
+          'group relative flex w-full items-center rounded-md py-2 text-sm font-medium text-foreground/80 outline-none transition-[padding,background-color,color,box-shadow] duration-200 ease-out hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+          collapsed ? 'mx-auto w-9 justify-center gap-0 px-0' : 'gap-2 px-3',
           isActive && 'bg-primary text-white shadow-sm',
         )
       }
@@ -44,7 +44,7 @@ export default function ShellSidebar({ collapsed }: { collapsed: boolean }) {
   return (
     <aside
       className={cn(
-        'col-span-12 rounded-lg border border-border bg-card p-3 shadow-sm transition-all duration-200 ease-out md:col-span-3',
+        'col-span-12 rounded-lg border border-border bg-card p-3 shadow-sm transition-all duration-200 ease-out md:col-span-3 md:h-[calc(100dvh-7rem)] md:overflow-y-auto',
         collapsed && 'md:col-span-1',
       )}
     >

@@ -2,8 +2,8 @@ import * as React from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
-import { Button } from '@/shared/ui/button'
-import { StatusCard } from '@/shared/ui/card'
+import { Button } from '@cxhub/shared/ui/button'
+import { StatusCard } from '@cxhub/shared/ui/card'
 import { useFeedbackUiStore, type SentimentFilter } from '@/shared/state/feedbackStore'
 
 import FeedbackHeader from '@/features/feedback/components/FeedbackHeader'

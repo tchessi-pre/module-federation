@@ -1,8 +1,8 @@
-import { Button } from '@/shared/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card'
+import { Button } from '@cxhub/shared/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@cxhub/shared/ui/card'
 
 import { PriorityPill, StatusPill } from '../pills'
-import { ticketStatusActionOptions } from '../../../../shared/lib/tickets'
+import { ticketStatusActionOptions } from '../../lib/tickets'
 import type { SavTicket, TicketStatus } from '../../types'
 
 export function TicketDetailsCard({

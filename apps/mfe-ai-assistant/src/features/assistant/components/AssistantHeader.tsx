@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui/button'
+import { Button } from '@cxhub/shared/ui/button'
 
 export default function AssistantHeader({
   topK,

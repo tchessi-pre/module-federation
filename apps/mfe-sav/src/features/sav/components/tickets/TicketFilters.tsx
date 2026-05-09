@@ -1,6 +1,6 @@
-import { Button } from '@/shared/ui/button'
+import { Button } from '@cxhub/shared/ui/button'
 
-import { ticketFilterOptions, type TicketFilter } from '../../../../shared/lib/tickets'
+import { ticketFilterOptions, type TicketFilter } from '../../lib/tickets'
 
 export function TicketFilters({
   value,

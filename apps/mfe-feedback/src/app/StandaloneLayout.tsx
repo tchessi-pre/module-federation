@@ -1,8 +1,8 @@
 import { Link, Route, Routes } from 'react-router-dom'
 
-import { Button } from '@/shared/ui/button'
+import { Button } from '@cxhub/shared/ui/button'
 import FeedbackRoutes from '@/Routes'
-import { useTheme, type ThemeMode } from '@/shared/theme/theme'
+import { useTheme, type ThemeMode } from '@cxhub/shared/theme'
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme()

@@ -1,6 +1,6 @@
 
-import { Badge } from '@/shared/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card'
+import { Badge } from '@cxhub/shared/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@cxhub/shared/ui/card'
 
 export default function KpiCard({
   title,

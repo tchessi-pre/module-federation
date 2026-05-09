@@ -1,0 +1,34 @@
+{
+	"name": "@cxhub/shared",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": "./src/index.ts",
+		"./lib/utils": "./src/lib/utils.ts",
+		"./utils": "./src/lib/utils.ts",
+		"./theme/theme": "./src/theme/theme.tsx",
+		"./theme": "./src/theme/theme.tsx",
+		"./ui/badge": "./src/ui/badge.tsx",
+		"./ui/button": "./src/ui/button.tsx",
+		"./ui/card": "./src/ui/card.tsx",
+		"./ui/icon-button": "./src/ui/icon-button.tsx",
+		"./ui/input": "./src/ui/input.tsx",
+		"./ui/stat-card": "./src/ui/stat-card.tsx",
+		"./ui/textarea": "./src/ui/textarea.tsx"
+	},
+	"peerDependencies": {
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"dependencies": {
+		"@radix-ui/react-slot": "^1.1.0",
+		"clsx": "^2.1.1",
+		"tailwind-merge": "^2.5.4"
+	},
+	"devDependencies": {
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1"
+	}
+}

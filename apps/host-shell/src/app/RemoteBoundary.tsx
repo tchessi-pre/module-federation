@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { StatusCard } from '@/shared/ui/card'
+import { StatusCard } from '@cxhub/shared/ui/card'
 import { Suspense } from 'react';
 
 class RemoteErrorBoundary extends React.Component<

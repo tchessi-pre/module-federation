@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { cn } from '@/shared/lib/utils'
-import { Button, type ButtonProps } from '@/shared/ui/button'
+import { cn } from '../lib/utils'
+import { Button, type ButtonProps } from './button'
 
 export type IconButtonProps = Omit<ButtonProps, 'children'> & {
   label: string

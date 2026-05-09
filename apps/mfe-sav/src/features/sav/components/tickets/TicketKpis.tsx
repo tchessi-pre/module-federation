@@ -1,5 +1,6 @@
-import type { TicketCounts } from '@/shared/lib/tickets'
-import { StatCard } from '@/shared/ui/stat-card'
+
+import type { TicketCounts } from '../../lib/tickets'
+import { StatCard } from '@cxhub/shared/ui/stat-card'
 
 export function TicketKpis({ counts }: { counts: TicketCounts }) {
   const items = [

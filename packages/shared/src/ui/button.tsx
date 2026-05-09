@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 
-import { cn } from '@/shared/lib/utils'
+import { cn } from '../lib/utils'
 
 type ButtonVariant = 'default' | 'secondary' | 'ghost' | 'danger'
 type ButtonSize = 'sm' | 'md'

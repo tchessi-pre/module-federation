@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom'
 
-import { useTheme, type ThemeMode } from '@/shared/theme/theme'
-import { Button } from '@/shared/ui/button'
+import { useTheme, type ThemeMode } from '@cxhub/shared/theme'
+import { Button } from '@cxhub/shared/ui/button'
 import SavRoutes from '@/Routes'
 
 function ThemeIconButton() {

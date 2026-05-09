@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { Button } from '@/shared/ui/button'
-import { Card, CardContent, CardHeader, CardTitle, StatusCard } from '@/shared/ui/card'
+import { Button } from '@cxhub/shared/ui/button'
+import { Card, CardContent, CardHeader, CardTitle, StatusCard } from '@cxhub/shared/ui/card'
 import { useAnalyticsUiStore } from '@/shared/state/analyticsStore'
 
 import AnalyticsHeader from '@/features/analytics/components/AnalyticsHeader'

@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card'
-import { cn } from '@/shared/lib/utils'
+import { Card, CardContent, CardHeader, CardTitle } from '@cxhub/shared/ui/card'
+import { cn } from '@cxhub/shared/utils'
 
 type ChatMessage = {
   id: string

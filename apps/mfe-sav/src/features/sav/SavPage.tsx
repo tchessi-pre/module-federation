@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-import { StatusCard } from '@/shared/ui/card'
+import { StatusCard } from '@cxhub/shared/ui/card'
 
 import { SavPageHeader } from './components/page/SavPageHeader'
 import { TicketKpis } from './components/tickets/TicketKpis'
 import { NewTicketCard } from './components/tickets/NewTicketCard'
 import { TicketDetailsCard } from './components/tickets/TicketDetailsCard'
 import { TicketsCard } from './components/tickets/TicketsCard'
-import { countTickets, type TicketFilter } from '@/shared/lib/tickets'
+import { countTickets, type TicketFilter } from './lib/tickets'
 import {
   mockCreateSavTicket,
   mockListSavTickets,
@@ -16,12 +16,11 @@ import {
   savTicketsKey,
 } from './data'
 import type { CreateSavTicketInput, SavTicket, TicketStatus } from './types'
-import { useEffect } from 'react'
 
 function useNow(intervalMs: number) {
   const [now, setNow] = React.useState(0)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const first = window.setTimeout(() => setNow(Date.now()), 0)
     const id = window.setInterval(() => setNow(Date.now()), intervalMs)
     return () => {

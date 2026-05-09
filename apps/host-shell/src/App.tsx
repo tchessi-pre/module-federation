@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import AppRoutes from '@/app/AppRoutes'
-import { ThemeProvider } from '@/shared/theme/theme'
+import { ThemeProvider } from '@cxhub/shared/theme'
 
 const queryClient = new QueryClient()
 

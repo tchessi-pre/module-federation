@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle, StatusCard } from '@/shared/ui/card'
+import { Card, CardContent, CardHeader, CardTitle, StatusCard } from '@cxhub/shared/ui/card'
 
 function KpiCard({ title, value, hint }: { title: string; value: string; hint: string }) {
   return (

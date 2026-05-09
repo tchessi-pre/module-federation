@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { Button } from '@/shared/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card'
+import { Button } from '@cxhub/shared/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@cxhub/shared/ui/card'
 
 import { Field, TextArea, TextInput } from '../form'
 import type { CreateSavTicketInput, TicketPriority } from '../../types'

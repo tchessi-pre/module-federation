@@ -1,8 +1,8 @@
 import type * as React from 'react'
 
-import { Button } from '@/shared/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card'
-import { Input } from '@/shared/ui/input'
+import { Button } from '@cxhub/shared/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@cxhub/shared/ui/card'
+import { Input } from '@cxhub/shared/ui/input'
 
 export default function PromptCard({
   input,

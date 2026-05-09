@@ -16,6 +16,7 @@ export default defineConfig({
     entry: {
       index: './src/main.tsx',
     },
+    include: [path.join(rootDir, '..', '..', 'packages', 'shared', 'src')],
   },
   html: {
     template: './index.html',
@@ -41,6 +42,7 @@ export default defineConfig({
         'react-router-dom': { singleton: true, requiredVersion: '^6.26.2' },
         zustand: { singleton: true, requiredVersion: '^4.5.5' },
         '@tanstack/react-query': { singleton: true, requiredVersion: '^5.59.16' },
+        '@cxhub/shared': { singleton: true, requiredVersion: '*' },
       },
       shareStrategy: 'version-first',
     },

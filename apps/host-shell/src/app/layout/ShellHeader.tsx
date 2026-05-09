@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, ExternalLink, Monitor, Moon, Sun } from 'lucide-react'
 
-import { useTheme, type ThemeMode } from '@/shared/theme/theme'
-import { Button } from '@/shared/ui/button'
-import { Badge } from '@/shared/ui/badge'
+import { useTheme, type ThemeMode } from '@cxhub/shared/theme'
+import { Button } from '@cxhub/shared/ui/button'
+import { Badge } from '@cxhub/shared/ui/badge'
 
 function ThemeIconButton() {
   const { theme, setTheme } = useTheme()

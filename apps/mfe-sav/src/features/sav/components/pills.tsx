@@ -1,4 +1,4 @@
-import { cn } from '@/shared/lib/utils'
+import { cn } from '@cxhub/shared/utils'
 
 import type { TicketPriority, TicketStatus } from '../types'
 

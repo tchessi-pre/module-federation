@@ -1,4 +1,4 @@
-import { cn } from '@/shared/lib/utils'
+import { cn } from '@cxhub/shared/utils'
 
 import { PriorityPill, StatusPill } from '../pills'
 import type { SavTicket } from '../../types'

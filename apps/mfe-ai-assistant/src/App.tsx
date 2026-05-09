@@ -1,5 +1,5 @@
 import StandaloneLayout from '@/app/StandaloneLayout'
-import { ThemeProvider } from '@/shared/theme/theme'
+import { ThemeProvider } from '@cxhub/shared/theme'
 
 export default function App() {
   return (

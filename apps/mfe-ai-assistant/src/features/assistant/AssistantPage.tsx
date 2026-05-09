@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useChat } from '@ai-sdk/react'
 
-import { StatusCard } from '@/shared/ui/card'
+import { StatusCard } from '@cxhub/shared/ui/card'
 import { useAssistantStore } from '@/shared/state/assistantStore'
 
 import { createLocalRagFetch } from '@/features/assistant/api/localRagFetch'

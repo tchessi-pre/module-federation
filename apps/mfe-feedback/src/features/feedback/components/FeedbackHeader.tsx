@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { Button } from '@/shared/ui/button'
+import { Button } from '@cxhub/shared/ui/button'
 import { useFeedbackUiStore } from '@/shared/state/feedbackStore'
 import FilterChip from './FilterChip'
 

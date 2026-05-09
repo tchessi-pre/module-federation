@@ -1,4 +1,4 @@
-import type { SavTicket, TicketStatus } from '../../features/sav/types'
+import type { SavTicket, TicketStatus } from '../types'
 
 export type TicketFilter = 'all' | TicketStatus
 export type TicketCounts = Record<'total' | TicketStatus, number>

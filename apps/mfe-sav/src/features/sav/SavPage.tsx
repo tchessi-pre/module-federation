@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { RefreshCw } from 'lucide-react'
 
 import { cn } from '@/shared/lib/utils'
 import { Button } from '@/shared/ui/button'
@@ -180,8 +181,11 @@ export default function SavPage() {
             size="sm"
             onClick={() => queryClient.invalidateQueries({ queryKey: savTicketsKey })}
             disabled={isLoading}
+            aria-label="Rafraîchir"
+            title="Rafraîchir"
+            className="h-9 w-9 p-0"
           >
-            Rafraîchir
+            <RefreshCw className={cn('h-4 w-4', isLoading && 'animate-spin')} />
           </Button>
         </div>
       </div>

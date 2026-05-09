@@ -44,7 +44,7 @@ export default function ShellSidebar({ collapsed }: { collapsed: boolean }) {
   return (
     <aside
       className={cn(
-        'col-span-12 rounded-lg border border-border bg-card p-3 shadow-sm transition-all duration-200 ease-out md:col-span-3 md:h-[calc(100dvh-7rem)] md:overflow-y-auto',
+        'scrollbar-none col-span-12 rounded-lg border border-border bg-card p-3 shadow-sm transition-all duration-200 ease-out md:col-span-3 md:sticky md:top-20 md:h-full md:overflow-y-auto',
         collapsed && 'md:col-span-1',
       )}
     >

@@ -9,15 +9,17 @@ export default function ShellLayout() {
   const toggleSidebar = useShellStore((s) => s.toggleSidebar)
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="flex h-[100dvh] flex-col overflow-hidden bg-background text-foreground">
       <ShellHeader sidebarCollapsed={sidebarCollapsed} onToggleSidebar={toggleSidebar} />
 
-      <div className="mx-auto grid max-w-6xl grid-cols-12 gap-4 px-4 py-6">
-        <ShellSidebar collapsed={sidebarCollapsed} />
+      <div className="mx-auto flex w-full max-w-6xl flex-1 min-h-0 px-4 py-6">
+        <div className="grid h-full min-h-0 w-full grid-cols-12 gap-4">
+          <ShellSidebar collapsed={sidebarCollapsed} />
 
-        <main className="col-span-12 md:col-span-9">
-          <Outlet />
-        </main>
+          <main className="scrollbar-none col-span-12 min-h-0 overflow-y-auto md:col-span-9">
+            <Outlet />
+          </main>
+        </div>
       </div>
     </div>
   )

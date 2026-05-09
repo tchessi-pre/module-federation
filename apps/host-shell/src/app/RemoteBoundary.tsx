@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { StatusCard } from '@/shared/ui/card'
+import { Suspense } from 'react';
 
 class RemoteErrorBoundary extends React.Component<
   { children: React.ReactNode; fallback: React.ReactNode },
@@ -29,13 +30,13 @@ export default function RemoteBoundary({ children }: { children: React.ReactNode
         />
       }
     >
-      <React.Suspense
+      <Suspense
         fallback={
           <StatusCard title="Chargement…" description="Récupération du micro-frontend." />
         }
       >
         {children}
-      </React.Suspense>
+      </Suspense>
     </RemoteErrorBoundary>
   )
 }

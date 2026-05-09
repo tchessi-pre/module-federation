@@ -12,6 +12,9 @@ export default defineConfig({
       '@': path.join(rootDir, 'src'),
     },
   },
+  output: {
+    module: false,
+  },
   source: {
     entry: {
       index: './src/main.tsx',
@@ -21,17 +24,18 @@ export default defineConfig({
     template: './index.html',
   },
   server: {
-    port: 5173,
+    port: 5177,
     strictPort: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   moduleFederation: {
     options: {
-      name: 'host',
-      remotes: {
-        feedback: 'feedback@http://localhost:5174/remoteEntry.js',
-        analytics: 'analytics@http://localhost:5175/remoteEntry.js',
-        assistant: 'assistant@http://localhost:5176/remoteEntry.js',
-        sav: 'sav@http://localhost:5177/remoteEntry.js',
+      name: 'sav',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Routes': './src/Routes.tsx',
       },
       shared: {
         react: { singleton: true, requiredVersion: '^18.3.1' },

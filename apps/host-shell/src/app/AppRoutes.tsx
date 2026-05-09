@@ -8,6 +8,7 @@ import ShellLayout from './ShellLayout'
 const FeedbackRoutes = React.lazy(() => import('feedback/Routes'))
 const AnalyticsRoutes = React.lazy(() => import('analytics/Routes'))
 const AssistantRoutes = React.lazy(() => import('assistant/Routes'))
+const SavRoutes = React.lazy(() => import('sav/Routes'))
 
 export default function AppRoutes() {
   return (
@@ -35,6 +36,14 @@ export default function AppRoutes() {
           element={
             <RemoteBoundary>
               <AssistantRoutes />
+            </RemoteBoundary>
+          }
+        />
+        <Route
+          path="sav/*"
+          element={
+            <RemoteBoundary>
+              <SavRoutes />
             </RemoteBoundary>
           }
         />

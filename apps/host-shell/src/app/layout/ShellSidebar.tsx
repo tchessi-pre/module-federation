@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { BarChart3, Bot, LayoutDashboard, MessageSquare } from 'lucide-react'
+import { BarChart3, Bot, Headset, LayoutDashboard, MessageSquare } from 'lucide-react'
 
 import { cn } from '@/shared/lib/utils'
 
@@ -72,6 +72,12 @@ export default function ShellSidebar({ collapsed }: { collapsed: boolean }) {
           label="AI Assistant"
           collapsed={collapsed}
           icon={<Bot className="h-4 w-4" />}
+        />
+        <NavItem
+          to="/sav"
+          label="SAV"
+          collapsed={collapsed}
+          icon={<Headset className="h-4 w-4" />}
         />
       </nav>
     </aside>

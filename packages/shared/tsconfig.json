@@ -1,8 +1,29 @@
 {
   "compilerOptions": {
     "target": "es2023",
-    "lib": ["ES2023", "DOM"],
+    "lib": [
+      "ES2023",
+      "DOM"
+    ],
     "module": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@cxhub/shared": [
+        "src/index.ts"
+      ],
+      "@cxhub/shared/ui": [
+        "src/ui"
+      ],
+      "@cxhub/shared/ui/*": [
+        "src/ui/*"
+      ],
+      "@cxhub/shared/utils": [
+        "src/lib/utils.ts"
+      ],
+      "@cxhub/shared/theme": [
+        "src/theme/theme.tsx"
+      ]
+    },
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
@@ -12,5 +33,7 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "../../apps/host-shell/tailwind.config.ts",
+    "css": "../../apps/host-shell/src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "utils": "@cxhub/shared/utils",
+    "components": "@cxhub/shared/ui",
+    "ui": "@cxhub/shared/ui"
+  }
+}

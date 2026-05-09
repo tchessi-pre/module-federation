@@ -32,6 +32,41 @@ Les remotes exposent des modules federated consommés par le host via des import
 pnpm install
 ```
 
+## shadcn/ui (générer dans `packages/shared`)
+
+Le repo centralise les composants “style shadcn” dans `packages/shared/src/ui` (package `@cxhub/shared`).
+
+### Installer / initialiser
+
+La config shadcn est dans `packages/shared/components.json`.  
+Si tu veux (ré)initialiser via le CLI :
+
+```bash
+pnpm -C packages/shared dlx shadcn@latest init
+```
+
+```bash
+pnpm dlx shadcn@latest add popover -c packages/shared
+```
+
+Valeurs attendues (exemple) :
+- Tailwind config : `../../apps/host-shell/tailwind.config.ts`
+- CSS : `../../apps/host-shell/src/index.css`
+- Components : `src/ui`
+- Utils : `src/lib/utils`
+
+### Ajouter un composant
+
+Exemple (génère dans `packages/shared/src/ui`) :
+
+```bash
+pnpm -C packages/shared dlx shadcn@latest add button
+```
+
+Important : pour exposer le composant à toutes les apps via `@cxhub/shared/ui/...`, ajoute aussi l’export correspondant dans :
+- `packages/shared/package.json` → champ `exports`
+- `packages/shared/src/index.ts` (si tu veux un barrel export)
+
 ## Lancer en dev (recommandé)
 
 Le script `dev` démarre les 4 apps (host + 3 remotes) en parallèle.

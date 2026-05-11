@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { StatusCard } from '@cxhub/shared/ui/card'
+import { StatusCard } from '@cxhub/shared/common/status-card'
 
 export default function NotFoundPage() {
   return (

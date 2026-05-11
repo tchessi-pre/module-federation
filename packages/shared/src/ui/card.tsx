@@ -2,8 +2,6 @@ import * as React from 'react'
 
 import { cn } from '../lib/utils'
 
-type StatusCardTone = 'default' | 'danger'
-
 export function Card({
   className,
   ...props
@@ -38,27 +36,4 @@ export function CardContent({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn('p-4 pt-0', className)} {...props} />
-}
-
-export function StatusCard({
-  title,
-  description,
-  tone = 'default',
-  className,
-}: {
-  title: React.ReactNode
-  description?: React.ReactNode
-  tone?: StatusCardTone
-  className?: string
-}) {
-  return (
-    <Card className={cn(tone === 'danger' && 'border-danger/40', className)}>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-      </CardHeader>
-      {description ? (
-        <CardContent className="text-sm text-foreground/70">{description}</CardContent>
-      ) : null}
-    </Card>
-  )
 }

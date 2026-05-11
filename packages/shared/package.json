@@ -10,12 +10,13 @@
 		"./utils": "./src/lib/utils.ts",
 		"./theme/theme": "./src/theme/theme.tsx",
 		"./theme": "./src/theme/theme.tsx",
+		"./common/status-card": "./src/common/status-card.tsx",
+		"./common/icon-button": "./src/common/icon-button.tsx",
+		"./common/stat-card": "./src/common/stat-card.tsx",
 		"./ui/badge": "./src/ui/badge.tsx",
 		"./ui/button": "./src/ui/button.tsx",
 		"./ui/card": "./src/ui/card.tsx",
-		"./ui/icon-button": "./src/ui/icon-button.tsx",
 		"./ui/input": "./src/ui/input.tsx",
-		"./ui/stat-card": "./src/ui/stat-card.tsx",
 		"./ui/textarea": "./src/ui/textarea.tsx"
 	},
 	"peerDependencies": {

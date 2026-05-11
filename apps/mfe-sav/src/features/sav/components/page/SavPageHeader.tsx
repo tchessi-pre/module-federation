@@ -1,6 +1,6 @@
 import { RefreshCw } from 'lucide-react';
 
-import { IconButton } from '@cxhub/shared/ui/icon-button';
+import { IconButton } from '@cxhub/shared/common/icon-button';
 
 export function SavPageHeader({
   isLoading,

@@ -1,86 +1,123 @@
-import * as React from 'react'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { useNavigate } from 'react-router-dom'
+import * as React from 'react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
-import { Button } from '@cxhub/shared/ui/button'
-import { StatusCard } from '@cxhub/shared/ui/card'
-import { useFeedbackUiStore, type SentimentFilter } from '@/shared/state/feedbackStore'
+import { Button } from '@cxhub/shared/ui/button';
+import { StatusCard } from '@cxhub/shared/common/status-card';
+import {
+  useFeedbackUiStore,
+  type SentimentFilter,
+} from '@/shared/state/feedbackStore';
 
-import FeedbackHeader from '@/features/feedback/components/FeedbackHeader'
-import FeedbackListContent from '@/features/feedback/components/FeedbackListContent'
-import NewFeedbackForm from '@/features/feedback/components/NewFeedbackForm'
-import type { CreateFeedbackInput, FeedbackItem, FeedbackSentiment } from '@/features/feedback/types'
-import { feedbackKey, mockCreateFeedback, mockListFeedback } from '@/features/feedback/data'
+import FeedbackHeader from '@/features/feedback/components/FeedbackHeader';
+import FeedbackListContent from '@/features/feedback/components/FeedbackListContent';
+import NewFeedbackForm from '@/features/feedback/components/NewFeedbackForm';
+import type {
+  CreateFeedbackInput,
+  FeedbackItem,
+  FeedbackSentiment,
+} from '@/features/feedback/types';
+import {
+  feedbackKey,
+  mockCreateFeedback,
+  mockListFeedback,
+} from '@/features/feedback/data';
 
 function matchesFilter(item: FeedbackItem, filter: SentimentFilter) {
-  if (filter === 'all') return true
-  return item.sentiment === filter
+  if (filter === 'all') return true;
+  return item.sentiment === filter;
 }
 
 export function FeedbackListPage() {
-  const sentiment = useFeedbackUiStore((s) => s.sentiment)
+  const sentiment = useFeedbackUiStore((s) => s.sentiment);
   const { data, isLoading, isError } = useQuery({
     queryKey: feedbackKey,
     queryFn: mockListFeedback,
-  })
+  });
 
-  const items = (data ?? []).filter((i) => matchesFilter(i, sentiment))
+  const items = (data ?? []).filter((i) => matchesFilter(i, sentiment));
 
   return (
-    <div className="space-y-4">
+    <div className='space-y-4'>
       <FeedbackHeader />
 
       {isLoading ? (
-        <StatusCard title="Chargement…" description="Récupération des feedbacks." />
+        <StatusCard
+          title='Chargement…'
+          description='Récupération des feedbacks.'
+        />
       ) : isError ? (
-        <StatusCard title="Erreur" description="Impossible de charger la liste." tone="danger" />
+        <StatusCard
+          title='Erreur'
+          description='Impossible de charger la liste.'
+          tone='danger'
+        />
       ) : (
         <FeedbackListContent items={items} />
       )}
     </div>
-  )
+  );
 }
 
 export function NewFeedbackPage() {
-  const navigate = useNavigate()
-  const queryClient = useQueryClient()
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-  const [customer, setCustomer] = React.useState('')
-  const [message, setMessage] = React.useState('')
-  const [sentiment, setSentiment] = React.useState<FeedbackSentiment>('neutral')
+  const [customer, setCustomer] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [sentiment, setSentiment] =
+    React.useState<FeedbackSentiment>('neutral');
 
   const mutation = useMutation({
     mutationFn: (input: CreateFeedbackInput) => mockCreateFeedback(input),
     onMutate: async (input) => {
-      await queryClient.cancelQueries({ queryKey: feedbackKey })
-      const previous = queryClient.getQueryData<FeedbackItem[]>(feedbackKey)
+      await queryClient.cancelQueries({ queryKey: feedbackKey });
+      const previous = queryClient.getQueryData<FeedbackItem[]>(feedbackKey);
       const optimistic: FeedbackItem = {
         id: `optimistic_${Math.random().toString(16).slice(2)}`,
         createdAt: new Date().toISOString(),
         ...input,
-      }
-      queryClient.setQueryData<FeedbackItem[]>(feedbackKey, (old) => [optimistic, ...(old ?? [])])
-      return { previous }
+      };
+      queryClient.setQueryData<FeedbackItem[]>(feedbackKey, (old) => [
+        optimistic,
+        ...(old ?? []),
+      ]);
+      return { previous };
     },
     onError: (_err, _input, ctx) => {
-      if (ctx?.previous) queryClient.setQueryData(feedbackKey, ctx.previous)
+      if (ctx?.previous) queryClient.setQueryData(feedbackKey, ctx.previous);
     },
     onSettled: async () => {
-      await queryClient.invalidateQueries({ queryKey: feedbackKey })
+      await queryClient.invalidateQueries({ queryKey: feedbackKey });
     },
-  })
+  });
 
   const canSubmit =
-    customer.trim().length >= 2 && message.trim().length >= 10 && !mutation.isPending
+    customer.trim().length >= 2 &&
+    message.trim().length >= 10 &&
+    !mutation.isPending;
+
+  const handleSubmit = React.useCallback(async () => {
+    await mutation.mutateAsync({
+      customer: customer.trim(),
+      message: message.trim(),
+      sentiment,
+    });
+    navigate('..');
+  }, [customer, message, mutation, navigate, sentiment]);
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3">
-        <div className="space-y-1">
-          <h1 className="text-2xl font-semibold tracking-tight">Nouveau feedback</h1>
-          <p className="text-sm text-foreground/70">Optimistic update côté client.</p>
+    <div className='space-y-4'>
+      <div className='flex items-center justify-between gap-3'>
+        <div className='space-y-1'>
+          <h1 className='text-2xl font-semibold tracking-tight'>
+            Nouveau feedback
+          </h1>
+          <p className='text-sm text-foreground/70'>
+            Optimistic update côté client.
+          </p>
         </div>
-        <Button variant="ghost" onClick={() => navigate('..')}>
+        <Button variant='ghost' onClick={() => navigate('..')}>
           Retour
         </Button>
       </div>
@@ -94,15 +131,8 @@ export function NewFeedbackPage() {
         onChangeMessage={setMessage}
         onChangeSentiment={setSentiment}
         onCancel={() => navigate('..')}
-        onSubmit={async () => {
-          await mutation.mutateAsync({
-            customer: customer.trim(),
-            message: message.trim(),
-            sentiment,
-          })
-          navigate('..')
-        }}
+        onSubmit={handleSubmit}
       />
     </div>
-  )
+  );
 }

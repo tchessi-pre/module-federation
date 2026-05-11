@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-import { StatusCard } from '@cxhub/shared/ui/card'
+import { StatusCard } from '@cxhub/shared/common/status-card'
 
 import { SavPageHeader } from './components/page/SavPageHeader'
 import { TicketKpis } from './components/tickets/TicketKpis'

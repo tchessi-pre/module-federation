@@ -27,9 +27,11 @@ export function TicketsCard({
 }) {
 	return (
 		<Card>
-			<CardHeader className='flex-row items-center justify-between gap-3'>
+			<CardHeader className='flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between'>
 				<CardTitle>Tickets</CardTitle>
-				<TicketFilters value={filter} onChange={onFilterChange} />
+				<div className='w-full sm:w-auto'>
+					<TicketFilters value={filter} onChange={onFilterChange} />
+				</div>
 			</CardHeader>
 			<CardContent className='space-y-3'>
 				<TicketList

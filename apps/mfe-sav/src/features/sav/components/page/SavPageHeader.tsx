@@ -1,13 +1,18 @@
-import { RefreshCw } from 'lucide-react';
+import { Plus, RefreshCw, X } from 'lucide-react';
 
 import { IconButton } from '@cxhub/shared/common/icon-button';
+import { Button } from '@cxhub/shared/ui/button';
 
 export function SavPageHeader({
   isLoading,
   onRefresh,
+  isNewTicketOpen,
+  onToggleNewTicket,
 }: {
   isLoading: boolean;
   onRefresh: () => void;
+  isNewTicketOpen: boolean;
+  onToggleNewTicket: () => void;
 }) {
   return (
     <div className='flex flex-wrap items-start justify-between gap-3'>
@@ -19,6 +24,15 @@ export function SavPageHeader({
         </p>
       </div>
       <div className='flex flex-wrap items-center gap-2'>
+        <Button
+          variant={isNewTicketOpen ? 'ghost' : 'secondary'}
+          size='sm'
+          onClick={onToggleNewTicket}
+          className='gap-2'
+        >
+          {isNewTicketOpen ? <X className='h-4 w-4' /> : <Plus className='h-4 w-4' />}
+          {isNewTicketOpen ? 'Fermer' : 'Nouveau ticket'}
+        </Button>
         <IconButton
           label='Rafraîchir'
           variant='ghost'

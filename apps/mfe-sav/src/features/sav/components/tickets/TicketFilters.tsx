@@ -1,4 +1,5 @@
 import { Button } from '@cxhub/shared/ui/button'
+import { ChevronDown } from 'lucide-react'
 
 import { ticketFilterOptions, type TicketFilter } from '../../lib/tickets'
 
@@ -16,9 +17,18 @@ export function TicketFilters({
           key={opt.value}
           size="sm"
           variant={value === opt.value ? 'secondary' : 'ghost'}
-          onClick={() => onChange(opt.value)}
+          onClick={() => onChange(value === opt.value ? 'all' : opt.value)}
+          aria-label={opt.icon ? opt.label : undefined}
+          title={opt.icon ? opt.label : undefined}
         >
-          {opt.label}
+          {opt.icon === 'dropdown' ? (
+            <ChevronDown
+              className={`h-4 w-4 transition-transform ${value === opt.value ? 'rotate-180' : 'rotate-0'
+                }`}
+            />
+          ) : (
+            opt.label
+          )}
         </Button>
       ))}
     </div>

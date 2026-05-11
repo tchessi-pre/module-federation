@@ -36,6 +36,7 @@ export default function SavPage() {
   const queryClient = useQueryClient()
   const [filter, setFilter] = React.useState<TicketFilter>('all')
   const [selectedId, setSelectedId] = React.useState<string | null>(null)
+  const [isNewTicketOpen, setIsNewTicketOpen] = React.useState(false)
   const now = useNow(60_000)
 
   const { data, isLoading, isError, error } = useQuery({
@@ -82,6 +83,8 @@ export default function SavPage() {
       <SavPageHeader
         isLoading={isLoading}
         onRefresh={() => queryClient.invalidateQueries({ queryKey: savTicketsKey })}
+        isNewTicketOpen={isNewTicketOpen}
+        onToggleNewTicket={() => setIsNewTicketOpen((v) => !v)}
       />
 
       {isLoading ? (
@@ -104,21 +107,25 @@ export default function SavPage() {
             onSelect={setSelectedId}
           />
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <NewTicketCard
-              isPending={createMutation.isPending}
-              errorMessage={createErrorMessage}
-              onCreate={async (input) => {
-                await createMutation.mutateAsync(input)
-              }}
-            />
+          {isNewTicketOpen ? (
+            <div className="grid grid-cols-1 gap-4">
+              <NewTicketCard
+                isPending={createMutation.isPending}
+                errorMessage={createErrorMessage}
+                onCreate={async (input) => {
+                  await createMutation.mutateAsync(input)
+                  setIsNewTicketOpen(false)
+                }}
+              />
+            </div>
+          ) : (
             <TicketDetailsCard
               ticket={selected}
               isPending={statusMutation.isPending}
               errorMessage={statusErrorMessage}
               onSetStatus={(id, status) => statusMutation.mutate({ id, status })}
             />
-          </div>
+          )}
         </>
       )}
     </div>

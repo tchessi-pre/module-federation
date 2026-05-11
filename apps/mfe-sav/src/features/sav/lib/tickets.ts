@@ -3,14 +3,18 @@ import type { SavTicket, TicketStatus } from '../types'
 export type TicketFilter = 'all' | TicketStatus
 export type TicketCounts = Record<'total' | TicketStatus, number>
 
-export const ticketFilterOptions: { value: TicketFilter; label: string }[] = [
-  { value: 'all', label: 'Tous' },
-  { value: 'open', label: 'Ouverts' },
-  { value: 'in_progress', label: 'En cours' },
-  { value: 'pending_customer', label: 'Attente client' },
-  { value: 'resolved', label: 'Résolus' },
-  { value: 'closed', label: 'Fermés' },
-]
+export const ticketFilterOptions: {
+  value: TicketFilter
+  label: string
+  icon?: 'dropdown'
+}[] = [
+    { value: 'all', label: 'Tous' },
+    { value: 'open', label: 'Ouverts' },
+    { value: 'in_progress', label: 'En cours' },
+    { value: 'pending_customer', label: 'Attente client' },
+    { value: 'resolved', label: 'Résolus' },
+    { value: 'closed', label: 'Fermés', icon: 'dropdown' },
+  ]
 
 export const ticketStatusActionOptions: { status: TicketStatus; label: string }[] = [
   { status: 'open', label: 'Ouvrir' },

@@ -18,6 +18,11 @@ declare module 'sav/Routes' {
   export default Routes
 }
 
+declare module 'faq/Routes' {
+  const Routes: () => JSX.Element
+  export default Routes
+}
+
 declare module 'assistant/mount' {
   export function mount(
     element: Element,

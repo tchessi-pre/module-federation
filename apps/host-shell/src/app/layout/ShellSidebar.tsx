@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { BarChart3, Bot, Headset, LayoutDashboard, MessageSquare } from 'lucide-react'
+import { BarChart3, Bot, CircleHelp, Headset, LayoutDashboard, MessageSquare } from 'lucide-react'
 
 import { cn } from '@cxhub/shared/utils'
 
@@ -78,6 +78,12 @@ export default function ShellSidebar({ collapsed }: { collapsed: boolean }) {
           label="SAV"
           collapsed={collapsed}
           icon={<Headset className="h-4 w-4" />}
+        />
+        <NavItem
+          to="/faq"
+          label="FAQ"
+          collapsed={collapsed}
+          icon={<CircleHelp className="h-4 w-4" />}
         />
       </nav>
     </aside>

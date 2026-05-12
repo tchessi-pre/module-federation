@@ -9,6 +9,7 @@ const FeedbackRoutes = React.lazy(() => import('feedback/Routes'));
 const AnalyticsRoutes = React.lazy(() => import('analytics/Routes'));
 const AssistantRoutes = React.lazy(() => import('assistant/Routes'));
 const SavRoutes = React.lazy(() => import('sav/Routes'));
+const FaqRoutes = React.lazy(() => import('faq/Routes'));
 
 export default function AppRoutes() {
 	return (
@@ -44,6 +45,14 @@ export default function AppRoutes() {
 					element={
 						<RemoteBoundary>
 							<SavRoutes />
+						</RemoteBoundary>
+					}
+				/>
+				<Route
+					path='faq/*'
+					element={
+						<RemoteBoundary>
+							<FaqRoutes />
 						</RemoteBoundary>
 					}
 				/>
